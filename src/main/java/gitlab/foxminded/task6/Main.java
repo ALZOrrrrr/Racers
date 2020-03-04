@@ -5,6 +5,5 @@ public class Main {
         RacersTime r = new RacersTime();
         Formatter f = new Formatter();
         System.out.println(f.format(r.calculate()));
-
     }
 }
