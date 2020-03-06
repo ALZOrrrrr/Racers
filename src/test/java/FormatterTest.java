@@ -5,16 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.List;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FormatterTest {
-
     private  RacersTime RacersTimeSpy = Mockito.spy(RacersTime.class);
     private Formatter formatter = new Formatter();
     private String expectedStandart = "1.Sebastian Vettel      | FERRARI                       | 01:04.415\n";
-
     @Test
     public void standartTest() throws Exception {
         Racer racer = new Racer();
@@ -24,9 +20,7 @@ public class FormatterTest {
         racer.setTime(64415);
         List<Racer> list = new ArrayList<>();
         list.add(racer);
-
-       Mockito.when(RacersTimeSpy.calculate()).thenReturn(list);
-        String actual = formatter.format(RacersTimeSpy.calculate());
+        String actual = formatter.format(list);
         assertEquals(expectedStandart, actual);
     }
     @Test

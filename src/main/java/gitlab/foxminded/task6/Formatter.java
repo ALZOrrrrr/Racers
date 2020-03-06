@@ -1,16 +1,22 @@
 package gitlab.foxminded.task6;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Formatter {
 
     private String SPACE = " ";
 
-    private void validate(List a){
-        if(a == null){
+    private void validate(List a) {
+        if (a == null) {
             throw new IllegalArgumentException("should be list parameter");
         }
     }
+
+    public String getBorder() {
+        return ("------------------------------------------------------------------------\n");
+    }
+
     private String adddSpaces(int index) {
         String returnString = "";
         for (int i = 0; i < index; i++) {
@@ -25,7 +31,7 @@ public class Formatter {
 
         for (int i = 0; i < list.size(); i++) {
             int spaceIndex = 22;
-            if(i > 8){
+            if (list.get(i).getPlace() > 9) {
                 spaceIndex--;
             }
             returnString.append(list.get(i).getPlace() + "." + list.get(i).getName() + adddSpaces(spaceIndex - list.get(i).getName().length()) + "|" + SPACE + list.get(i).getCompany() + adddSpaces(30 - list.get(i).getCompany().length()) + "|" + SPACE);// + list.get(i).getTime() + "\n");
@@ -36,10 +42,6 @@ public class Formatter {
             long minute = (durationInMillis / (1000 * 60)) % 60;
 
             returnString.append(String.format("%02d:%02d.%d", minute, second, millis) + "\n");
-            if(i == 14){
-                returnString.append("------------------------------------------------------------------------\n");
-            }
-
         }
 
         return returnString.toString();

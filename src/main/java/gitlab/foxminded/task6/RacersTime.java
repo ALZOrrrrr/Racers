@@ -2,11 +2,17 @@ package gitlab.foxminded.task6;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.StreamCorruptedException;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacersTime {
 
-    public List<Racer> calculate() throws Exception {
+    public String calculate() throws Exception {
+        StringBuilder returnString = new StringBuilder();
+        Formatter formatter = new Formatter();
+
         File abbreviationsFile = new File("C:\\Users\\alzoz\\IdeaProjects\\task6\\src\\main\\resources\\abbreviations.txt");
         File startFile = new File("C:\\Users\\alzoz\\IdeaProjects\\task6\\src\\main\\resources\\start.log");
         File endFile = new File("C:\\Users\\alzoz\\IdeaProjects\\task6\\src\\main\\resources\\end.log");
@@ -85,7 +91,11 @@ public class RacersTime {
             returnList.get(i).setPlace(i + 1);
         }
         sc.close();
-        return returnList;
+        returnString.append(formatter.format(returnList.stream().filter(x -> x.getPlace() < 16).collect(Collectors.toList())));
+        returnString.append(formatter.getBorder());
+        returnString.append(formatter.format(returnList.stream().filter(x -> x.getPlace() >= 16).collect(Collectors.toList())));
+        int a = 0;
+        return returnString.toString();
     }
 
 
