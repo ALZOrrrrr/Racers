@@ -33,7 +33,7 @@ public class Formatter {
             if (list.get(i).getPlace() > 9) {
                 spaceIndex--;
             }
-            returnString.append(list.get(i).getPlace() + "." + list.get(i).getName() + adddSpaces(spaceIndex - list.get(i).getName().length()) + "|" + SPACE + list.get(i).getCompany() + adddSpaces(30 - list.get(i).getCompany().length()) + "|" + SPACE);// + list.get(i).getTime() + "\n");
+            returnString.append(list.get(i).getPlace() + "." + list.get(i).getName() + adddSpaces(spaceIndex - list.get(i).getName().length()) + "|" + SPACE + list.get(i).getCompany() + adddSpaces(30 - list.get(i).getCompany().length()) + "|" + SPACE);
 
             long durationInMillis = list.get(i).getTime();
             long millis = durationInMillis % 1000;
