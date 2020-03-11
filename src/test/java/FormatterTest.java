@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FormatterTest {
     private  RacersTime RacersTimeSpy = Mockito.spy(RacersTime.class);
     private Formatter formatter = new Formatter();
-    private String expectedStandart = "1.Sebastian Vettel      | FERRARI                       | 01:04.415\n";
+    private String expectedStandart = "1.Sebastian Vettel      | FERRARI                       | 01:04.415\n" + "------------------------------------------------------------------------\n";
     @Test
     public void standartTest() throws Exception {
         Racer racer = new Racer();

@@ -1,6 +1,7 @@
 package gitlab.foxminded.task6;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Formatter {
 
@@ -12,7 +13,7 @@ public class Formatter {
         }
     }
 
-    public String getBorder() {
+    private String getBorder() {
         return ("------------------------------------------------------------------------\n");
     }
 
@@ -24,8 +25,7 @@ public class Formatter {
         return returnString;
     }
 
-    public String format(List<Racer> list) {
-        validate(list);
+    private String addRacers(List<Racer> list){
         StringBuilder returnString = new StringBuilder();
 
         for (int i = 0; i < list.size(); i++) {
@@ -45,6 +45,19 @@ public class Formatter {
 
         return returnString.toString();
 
+
+
+
+
+    }
+
+    public String format(List<Racer> list) {
+        validate(list);
+        StringBuilder returnString = new StringBuilder();
+         returnString.append(addRacers(list.stream().filter(x -> x.getPlace() < 16).collect(Collectors.toList())));
+         returnString.append(getBorder());
+        returnString.append(addRacers(list.stream().filter(x -> x.getPlace() >= 16).collect(Collectors.toList())));
+        return returnString.toString();
     }
 
 

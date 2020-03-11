@@ -5,6 +5,15 @@ public class Racer implements Comparable<Racer>{
    private String name;
    private String company;
 
+    public Racer() {
+    }
+
+    public Racer(String name, String company, long time) {
+        this.name = name;
+        this.company = company;
+        this.time = time;
+    }
+
     public int getPlace() {
         return place;
     }
@@ -36,10 +45,7 @@ public class Racer implements Comparable<Racer>{
     public void setCompany(String company) {
         this.company = company;
     }
-
-
-    @Override
-    public int compareTo(Racer o) {
+   @Override
+   public int compareTo(Racer o) {
         return this.time > o.getTime() ? 1 : this.time < o.getTime() ? -1 : 0;  }
-
 }
