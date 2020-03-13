@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
                 Files.lines(Paths.get(path))
                         .forEach(x -> resultMap.put(x.substring(0,3),LocalTime.parse(x.split("_")[1])));
             } catch (IOException e) {
-                System.err.println(e);
+                System.out.println("File has to be text format");
             }
             return resultMap;
         }
