@@ -13,22 +13,23 @@ import java.util.stream.Collectors;
         private static Map<String, LocalTime> getRacesTime(String path){
             Map<String, LocalTime> resultMap = new HashMap<>();
             try {
-                Files.lines(Paths.get(path)).forEach(x -> resultMap.put(x.substring(0,3),LocalTime.parse(x.split("_")[1])));
+                Files.lines(Paths.get(path))
+                        .forEach(x -> resultMap.put(x.substring(0,3),LocalTime.parse(x.split("_")[1])));
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println(e);
             }
             return resultMap;
         }
 
     public List<Racer> getRacers(String abbreviations, String startTime, String endTime)throws Exception {
 
-        List<String[]> abbreviationsList = Files.lines(Paths.get(abbreviations)).map(x -> x.split("_")).collect(Collectors.toList());
-
         Map<String, LocalTime> startMap = getRacesTime(startTime);
 
         Map<String, LocalTime> endMap = getRacesTime(endTime);
 
-        return abbreviationsList.stream().map(x -> new Racer(x[1], x[2], endMap.get(x[0]).getLong(ChronoField.MILLI_OF_DAY) - startMap.get(x[0])
+        return Files.lines(Paths.get(abbreviations))
+                .map(x -> x.split("_"))
+                .map(x -> new Racer(x[1], x[2], endMap.get(x[0]).getLong(ChronoField.MILLI_OF_DAY) - startMap.get(x[0])
                 .getLong(ChronoField.MILLI_OF_DAY)))
                 .collect(Collectors.toList());
     }
