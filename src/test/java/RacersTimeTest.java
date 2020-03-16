@@ -35,7 +35,7 @@ public class RacersTimeTest {
         assertEquals(Collections.emptyList(), actual);
     }
     @Test
-    public void fileNotFoundTest() {
+    public void fileEndTimeNotFoundTest() {
         List actual = racersTime.getRacers("abbreviations.txt", "start.log", "a");
         assertEquals(Collections.emptyList(), actual);
     }
