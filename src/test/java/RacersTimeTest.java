@@ -25,8 +25,18 @@ public class RacersTimeTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
     @Test
-    public void fileNotFoundTest() {
+    public void fileAbbreviationsNotFoundTest() {
         List actual = racersTime.getRacers("a", "start.log", "end.log");
+        assertEquals(Collections.emptyList(), actual);
+    }
+    @Test
+    public void fileStartTimeNotFoundTest() {
+        List actual = racersTime.getRacers("abbreviations.txt", "a", "end.log");
+        assertEquals(Collections.emptyList(), actual);
+    }
+    @Test
+    public void fileNotFoundTest() {
+        List actual = racersTime.getRacers("abbreviations.txt", "start.log", "a");
         assertEquals(Collections.emptyList(), actual);
     }
 }
