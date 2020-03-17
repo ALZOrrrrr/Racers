@@ -8,13 +8,7 @@ import java.time.temporal.ChronoField;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
-
-
-
-
     public class RacersTime {
-
 
         private void validate(String a, String b, String c) {
             if (a == null || b == null || c == null)
